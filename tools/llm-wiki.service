@@ -1,0 +1,18 @@
+[Unit]
+Description=LLM Wiki 知识库网站
+After=network.target
+
+[Service]
+Type=simple
+# ↓ 改成你的服务器用户名
+User=YOUR_USERNAME
+# ↓ 改成实际的项目路径
+WorkingDirectory=/home/YOUR_USERNAME/llm-wiki-agent
+ExecStart=/usr/bin/python3 -m mkdocs serve --dev-addr 0.0.0.0:8080
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
